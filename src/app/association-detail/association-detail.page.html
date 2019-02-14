@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button (click)="closeModal()" slot="end" shape="round" fill="outline">
+      <ion-icon name="close"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-card *ngFor="let association of associations">
+      <ion-card-content>
+        <p><strong>Nom :</strong> {{association.nom}}</p>
+        <p><strong>Personne Morale :</strong> {{association.moral}}</p>
+        <p><strong>Adresse :</strong> {{association.adresse}}</p>
+        <p><strong>Téléphone :</strong> {{association.telephone}}</p>
+        <p><strong>Email :</strong> {{association.email}}</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+</ion-content>

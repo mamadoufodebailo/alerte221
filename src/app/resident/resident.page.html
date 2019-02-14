@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-img [src]="logo"></ion-img>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="retourPage()">
+      <ion-icon name="arrow-round-back"></ion-icon>
+    </ion-buttons>
+    <h5 text-wrap="" text-center="" style="color: white">{{slogan}}</h5>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h3 style="color: #0bb8cc" text-center="" text-wrap="">Choissisez votre typ d'inscription</h3>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h2 text-center="">Avec Papier</h2>
+        <a (click)="showPapier()">
+          <img height="70" width="100" src="assets/icones/inscription.png" />
+        </a>
+      </ion-col>
+      <ion-col>
+        <h2 text-center="">Sans Papier</h2>
+        <a (click)="showInconnu()">
+          <img height="70" width="100" src="assets/icones/inconnu.png" />
+        </a>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

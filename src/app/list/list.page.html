@@ -1,11 +1,13 @@
 <ion-header>
+  <ion-img [src]="logo"></ion-img>
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-buttons slot="start" (click)="retourPage()">
+      <ion-icon name="arrow-round-back"></ion-icon>
+    </ion-buttons>
+    <h5 style="color: white" text-center="" text-wrap="">{{slogan}}</h5>
+    <ion-buttons slot="end">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>
-      List
-    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -18,6 +20,12 @@
         {{item.note}}
       </div>
     </ion-item>
+    <form #f="ngForm" (ngSubmit)="addList(f.value)">
+      <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime name="date" displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" [(ngModel)]="date"></ion-datetime>
+      </ion-item>
+    </form>
   </ion-list>
   <!--
     <div *ngIf="selectedItem" padding>

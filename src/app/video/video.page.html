@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-img [src]="logo"></ion-img>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="retourPage()">
+      <ion-icon name="arrow-round-back"></ion-icon>
+    </ion-buttons>
+    <h5 text-wrap="" text-center="" style="color: white">{{slogan}}</h5>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-card>
+      <ion-card-content>
+        <iframe height="220" frameborder="0" allowfullscreen
+                [src]="sanitizeUrl('https://www.youtube.com/embed/ZwQWi-EniBw')"></iframe>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <iframe height="220" frameborder="0" allowfullscreen
+                [src]="sanitizeUrl('https://www.youtube.com/embed/ywYW-ZL-iv8')"></iframe>
+      </ion-card-content>
+    </ion-card>
+
+  </ion-list>
+</ion-content>

@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-img [src]="logo"></ion-img>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="retourPage()">
+      <ion-icon name="arrow-round-back"></ion-icon>
+    </ion-buttons>
+    <h5 text-center="" text-wrap="" style="color:white">{{slogan}}</h5>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <h3 text-wrap="" text-center="">Inscrivez-vous en toute liberté</h3>
+
+    <form [formGroup]="fgroup" (ngSubmit)="inscrire(fgroup.value)">
+      <ion-item>
+        <ion-label>N° Passport</ion-label>
+        <ion-input formControlName="passport"></ion-input>
+        <span *ngIf="!fgroup.controls['passport'].valid && fgroup.controls['passport'].touched">
+            Veuillez remplir correctement le champs !
+          </span>
+      </ion-item>
+      <ion-item>
+        <ion-label>Téléphone</ion-label>
+        <ion-input formControlName="telephone"></ion-input>
+        <span *ngIf="!fgroup.controls['telephone'].valid && fgroup.controls['telephone'].touched">
+            Veuillez remplir correctement le champs !
+        </span>
+      </ion-item>
+      <ion-item>
+        <ion-label>Pays de résidence</ion-label>
+        <ion-input formControlName="pays"></ion-input>
+        <span *ngIf="!fgroup.controls['pays'].valid && fgroup.controls['pays'].touched">
+            Veuillez remplir correctement le champs !
+          </span>
+      </ion-item>
+      <ion-item>
+        <ion-label>Adresse</ion-label>
+        <ion-textarea formControlName="adresse"></ion-textarea>
+        <span *ngIf="!fgroup.controls['adresse'].valid && fgroup.controls['adresse'].touched">
+            Veuillez remplir correctement le champs !
+          </span>
+      </ion-item>
+
+      <ion-button type="submit" expand="full" [disabled]="!fgroup.valid">S'inscrire</ion-button>
+    </form>
+  </ion-list>
+</ion-content>

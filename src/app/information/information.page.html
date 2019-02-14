@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-img [src]="logo"></ion-img>
+  <ion-toolbar>
+      <ion-buttons slot="start" (click)="retourPage()">
+          <ion-icon name="arrow-round-back"></ion-icon>
+      </ion-buttons>
+      <h5 text-wrap="" text-center="" style="color: white">{{slogan}}</h5>
+      <ion-buttons slot="end">
+          <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <ion-card *ngFor="let info of informations">
+            <ion-card-title>
+                <h3 text-wrap="" text-center="" style="color:blue">{{info.titre}}</h3>
+            </ion-card-title>
+            <ion-card-content>
+                <ion-img [src]="info.photo"></ion-img>
+                <a (click)="onDetail(info)">Suite...</a>
+            </ion-card-content>
+        </ion-card>
+    </ion-list>
+</ion-content>

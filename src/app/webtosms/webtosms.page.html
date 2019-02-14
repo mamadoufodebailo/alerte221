@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-img [src]="logo"></ion-img>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="retourPage()">
+      <ion-icon name="arrow-round-back"></ion-icon>
+    </ion-buttons>
+    <h5 text-center="" text-wrap="" style="color: white">{{slogan}}</h5>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+
+    <h3 text-center="" text-wrap="" text-uppercase="">Web to SMS</h3>
+
+    <p text-wrap="" text-center="" style="color: #0bb8cc">
+      Pour recevoir des informations ou des alertes sur votre téléphone
+      accompagné de l'indicatif ou sur votre email, veuillez vous inscrire gratuitement
+    </p>
+
+    <form [formGroup]="fgroup" (ngSubmit)="sendConfirm(fgroup.value)">
+      <ion-item>
+        <ion-label>Prénoms</ion-label>
+        <ion-input formControlName="prenoms"></ion-input>
+        <span *ngIf="!fgroup.controls['prenoms'].valid && fgroup.controls['prenoms'].touched">
+          {{message}}
+        </span>
+      </ion-item>
+      <ion-item>
+        <ion-label>Nom</ion-label>
+        <ion-input formControlName="nom"></ion-input>
+        <span *ngIf="!fgroup.controls['nom'].valid && fgroup.controls['nom'].touched">
+          {{message}}
+        </span>
+      </ion-item>
+      <ion-item>
+        <ion-label>Téléphone + indicatif</ion-label>
+        <ion-input formControlName="telephone"></ion-input>
+        <span *ngIf="!fgroup.controls['telephone'].valid && fgroup.controls['telephone'].touched">
+          {{message}}
+        </span>
+      </ion-item>
+      <ion-item>
+        <ion-label>Email</ion-label>
+        <ion-input formControlName="email"></ion-input>
+        <span *ngIf="!fgroup.controls['email'].valid && fgroup.controls['email'].touched">
+          {{message}}
+        </span>
+      </ion-item>
+
+      <ion-button type="submit" expand="full" [disabled]="!fgroup.valid">Envoyer</ion-button>
+
+    </form>
+
+  </ion-list>
+
+</ion-content>

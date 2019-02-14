@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-img [src]="logo"></ion-img>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="retourPage()">
+      <ion-icon name="arrow-round-back"></ion-icon>
+    </ion-buttons>
+    <h5 text-wrap="" text-center="" style="color: white">{{slogan}}</h5>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form [formGroup]="fgroup" (ngSubmit)="addVoyage(fgroup.value)">
+    <ion-radio-group>
+      <ion-header>
+        <ion-label>Type de Voyage</ion-label>
+      </ion-header>
+
+      <ion-item>
+        <ion-label>Aérien</ion-label>
+        <ion-radio slot="start" value="aerien" formControlName="type"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Terreste</ion-label>
+        <ion-radio slot="start" formControlName="type" value="terreste" checked></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Maritime</ion-label>
+        <ion-radio slot="start" value="maritime" formControlName="type"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+
+    <ion-item id="carte">
+      <ion-label>N° CNI</ion-label>
+      <ion-input formControlName="passport"></ion-input>
+      <span *ngIf="!fgroup.controls['passport'].valid && fgroup.controls['passport'].touched">
+        {{message}}
+      </span>
+    </ion-item>
+
+    <ion-item id="passport">
+      <ion-label>N° Passport</ion-label>
+      <ion-input formControlName="passport"></ion-input>
+      <span *ngIf="!fgroup.controls['passport'].valid && fgroup.controls['passport'].touched">
+        {{message}}
+      </span>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Pays de destination</ion-label>
+      <ion-input formControlName="destination"></ion-input>
+      <span *ngIf="!fgroup.controls['destination'].valid && fgroup.controls['destination'].touched">
+        {{message}}
+      </span>
+    </ion-item>
+    <ion-item>
+      <ion-label>Date de départ</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" formControlName="dateDepart"></ion-datetime>
+      <span *ngIf="!fgroup.controls['dateDepart'].valid && fgroup.controls['dateDepart'].touched">
+        {{message}}
+      </span>
+    </ion-item>
+    <ion-item>
+      <ion-label>Date d'arrivée</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" formControlName="dateArrivee"></ion-datetime>
+      <span *ngIf="!fgroup.controls['dateArrivee'].valid && fgroup.controls['dateArrivee'].touched">
+        {{message}}
+      </span>
+    </ion-item>
+
+    <ion-button type="submit" expand="full" [disabled]="!fgroup.valid">Valider</ion-button>
+
+  </form>
+
+</ion-content>

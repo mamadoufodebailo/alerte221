@@ -1,0 +1,39 @@
+<ion-header xmlns="http://www.w3.org/1999/html">
+  <ion-toolbar>
+    <ion-button (click)="closeModal()" slot="end" shape="round" fill="outline">
+      <ion-icon name="close"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-card>
+      <ion-card-title text-center="">Ambassade</ion-card-title>
+      <ion-card-content>
+        <p><strong>Ville:</strong> {{embassy.ambassade.ville}}</p>
+        <p><strong>Adresse:</strong> {{embassy.ambassade.adresse}}</p>
+        <p><strong>Téléphone:</strong> {{embassy.ambassade.telephone}}</p>
+        <p><strong>Télécopie:</strong> {{embassy.ambassade.telecopie}}</p>
+        <p><strong>Site web:</strong> <a [href]="embassy.ambassade.site">Visitez...</a></p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="embassy.consulats.length >= 1">
+      <ion-card-title text-center="">Consulats</ion-card-title>
+      <ion-card-content>
+        <ion-card *ngFor="let consulat of embassy.consulats">
+          <ion-card-content>
+            <p><strong>Ville:</strong> {{consulat.ville}}</p>
+            <p><strong>Adresse:</strong> {{consulat.adresse}}</p>
+            <p><strong>Téléphone:</strong> {{consulat.telephone}}</p>
+            <p><strong>Télécopie:</strong> {{consulat.telecopie}}</p>
+            <p><span>Site web:</span> <a [href]="consulat.site">visitez...</a></p>
+          </ion-card-content>
+        </ion-card>
+      </ion-card-content>
+    </ion-card>
+
+  </ion-list>
+</ion-content>

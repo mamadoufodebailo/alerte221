@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-img [src]="logo"></ion-img>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="retourPage()">
+      <ion-icon name="arrow-round-back"></ion-icon>
+    </ion-buttons>
+    <h5 style="color: white" text-center="" text-wrap="">{{slogan}}</h5>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col *ngFor="let embassy of liste_ambassades">
+          <a (click)="openDetail(embassy)">
+            <ion-img style="height: 70px" [src]="embassy.photo"></ion-img>
+          </a>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-list>
+</ion-content>

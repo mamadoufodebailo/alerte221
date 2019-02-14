@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-img [src]="logo"></ion-img>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon name="camera"></ion-icon>
+    </ion-buttons>
+    <h5 style="color: white" text-center="" text-wrap="">{{slogan}}</h5>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form #f="ngForm" (submit)="acteDeces(f.value)">
+    <ion-list>
+      <ion-item>
+        <ion-label>Prénom defunt</ion-label>
+        <ion-input required="required" clearInput name="prenomDefunt" [(ngModel)]="deces.prenomDefunt"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Nom defunt</ion-label>
+        <ion-input required="required" clearInput name="nomDefunt" [(ngModel)]="deces.nomDefunt"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Sexe</ion-label>
+        <ionic-selectable required="required" name="sexeDefunt"
+                          [(ngModel)]="deces.sexeDefunt"
+                          [items]="sexe"
+                          itemValueField="id"
+                          itemTextField="name"
+                          [canSearch]="true"
+                          (onChange)="sexeChanged($event)">
+        </ionic-selectable>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Date de déces</ion-label>
+        <ion-button (click)="showDatePicker()">
+          <ion-icon name="calendar"></ion-icon>
+        </ion-button>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Pays de déces</ion-label>
+        <ion-input required="required" clearInput name="pays" [(ngModel)]="deces.paysNaissance"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Lieu de déces</ion-label>
+        <ion-input required="required" clearInput name="lieuNaissance" [(ngModel)]="deces.lieuNaissance"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Prénom déclarant</ion-label>
+        <ion-input required="required" clearInput name="prenomDeclarant" [(ngModel)]="deces.prenomDeclarant"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Nom déclarant</ion-label>
+        <ion-input required="required" clearInput name="nomDeclarant" [(ngModel)]="deces.nomDeclarant"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>N° passport déclarant</ion-label>
+        <ion-input clearInput name="passeportDeclarant" [(ngModel)]="deces.passeportDeclarant"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Téléphone déclarant</ion-label>
+        <ion-input required="required" clearInput name="telephoneDeclaration" [(ngModel)]="deces.telephoneDeclarant"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-button expand="full" [disabled]="!f.valid">Ajouter</ion-button>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

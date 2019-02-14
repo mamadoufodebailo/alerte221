@@ -1,0 +1,166 @@
+<ion-header>
+  <ion-img [src]="logo"></ion-img>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="retourPage()">
+      <ion-icon name="arrow-round-back"></ion-icon>
+    </ion-buttons>
+    <h5 style="color: white" text-center="" text-wrap="">{{slogan}}</h5>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div text-center="" text-wrap="" style="background-color: rgba(0,0,0,0.7);color: white">
+    <aside *ngIf="page == 'touki';else resident">
+      <h3>Touki, un fil de sécurité</h3>
+      <p>
+        Touki vous permet, lorsque vous effectuez un voyage ou une mission ponctuelle,
+        de vous signaler gratuitement et facilement auprès du ministère des Affaires
+        étrangères et des sénégalais de l'exterieur.
+      </p>
+      <p>
+        L'inscription sur l'application, conçue en concertation avec la dite ministère,
+        offre toutes les garanties de sécurité et de confidentialité des données personnelles.
+        Elle ne se substitue pas à l'inscription au registre des sénégalais de l'exterieur
+        dès lors que le temps de séjour est supérieur à 6 mois.
+      </p>
+      <p>
+        Une fois vos données saisies sur Touki :
+      </p>
+      <ul>
+        <li>
+          vous recevrez des recommandations de sécurité par courriels si la
+          situation dans le pays le justifie
+        </li>
+        <li>
+          vous serez contacté en cas de crise dans votre pays de destination
+        </li>
+        <li>
+          la personne contact que vous aurez désignée pourra également être prévenue
+          en cas de besoin
+        </li>
+      </ul>
+    </aside>
+
+    <ng-template #resident>
+      <aside>
+        <h3>Bitim Rew, un fil de sécurité</h3>
+        <p>
+          Bitim Rew vous permet, lorsque vous etes déja à l'etranger,
+          de vous signaler gratuitement et facilement auprès du ministère des Affaires
+          étrangères et des sénégalais de l'exterieur.
+        </p>
+        <p>
+          L'inscription sur l'application, conçue en concertation avec la dite ministère,
+          offre toutes les garanties de sécurité et de confidentialité des données personnelles.
+          Elle ne se substitue pas à l'inscription au registre des sénégalais de l'exterieur
+          dès lors que le temps de séjour est supérieur à 6 mois.
+        </p>
+        <p>
+          Une fois vos données saisies sur Bitim Rew :
+        </p>
+        <ul>
+          <li>
+            vous recevrez des recommandations de sécurité par courriels si la
+            situation dans le pays le justifie
+          </li>
+          <li>
+            vous serez contacté en cas de crise dans votre pays de destination
+          </li>
+          <li>
+            la personne contact que vous aurez désignée pourra également être prévenue
+            en cas de besoin
+          </li>
+        </ul>
+      </aside>
+    </ng-template>
+  </div>
+
+  <aside *ngIf="mode == 'connexion';else inscris">
+
+    <h3 text-center="" style="color: #0bb8cc">
+      Vous n'avez pas de compte et souhaitez vous inscrire
+    </h3>
+
+    <ion-button color="primary" (click)="getInscription()">S'inscrire</ion-button>
+
+    <form [formGroup]="Cgroup" (ngSubmit)="connecter(Cgroup.value)">
+      <ion-item>
+        <ion-label>Login</ion-label>
+        <ion-input formControlName="login"></ion-input>
+        <span class="erreur" *ngIf="!Cgroup.controls['login'].valid && Cgroup.controls['login'].touched">
+        {{message}}
+      </span>
+      </ion-item>
+      <ion-item>
+        <ion-label>Mot de passe</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+        <span class="erreur" *ngIf="!Cgroup.controls['password'].valid && Cgroup.controls['password'].touched">
+        {{message}}
+      </span>
+      </ion-item>
+      <ion-button type="submit" expand="full" [disabled]="!Cgroup.valid">Connexion</ion-button>
+    </form>
+  </aside>
+
+  <ng-template #inscris>
+    <h3 text-center="" style="color: #0bb8cc">Vous avez un compte</h3>
+
+    <ion-button color="primary" (click)="getConnexion()">Se connecter</ion-button>
+
+    <form [formGroup]="Igroup" (ngSubmit)="inscrire(Igroup.value)">
+      <ion-item>
+        <ion-label>Prénoms</ion-label>
+        <ion-input formControlName="prenoms"></ion-input>
+        <span class="erreur" *ngIf="!Igroup.controls['prenoms'].valid && Igroup.controls['prenoms'].touched">
+        {{message}}
+      </span>
+      </ion-item>
+      <ion-item>
+        <ion-label>Nom</ion-label>
+        <ion-input formControlName="nom"></ion-input>
+        <span class="erreur" *ngIf="!Igroup.controls['nom'].valid && Igroup.controls['nom'].touched">
+        {{message}}
+      </span>
+      </ion-item>
+      <ion-item>
+        <ion-label>Sexe</ion-label>
+        <ionic-selectable formControlName="sexe"
+                          [items]="sexe"
+                          itemValueField="id"
+                          itemTextField="name"
+                          (onChange)="sexeChanged($event)">
+        </ionic-selectable>
+        <span class="erreur" *ngIf="!Igroup.controls['sexe'].valid && Igroup.controls['sexe'].touched">
+        {{message}}
+      </span>
+      </ion-item>
+      <ion-item>
+        <ion-label>Date de naissance</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" formControlName="dateNaissance"></ion-datetime>
+        <span class="erreur" *ngIf="!Igroup.controls['dateNaissance'].valid && Igroup.controls['dateNaissance'].touched">
+        {{message}}
+        </span>
+      </ion-item>
+      <ion-item>
+        <ion-label>Email</ion-label>
+        <ion-input formControlName="email"></ion-input>
+        <span class="erreur" *ngIf="!Igroup.controls['email'].valid && Igroup.controls['email'].touched">
+        {{message}}
+      </span>
+      </ion-item>
+      <ion-item>
+        <ion-label>N° Whatsapp</ion-label>
+        <ion-input formControlName="numero"></ion-input>
+        <span class="erreur" *ngIf="!Igroup.controls['numero'].valid && Igroup.controls['numero'].touched">
+        {{message}}
+      </span>
+      </ion-item>
+
+      <ion-button type="submit" expand="full" [disabled]="!Igroup.valid">S'inscrire</ion-button>
+    </form>
+  </ng-template>
+
+</ion-content>

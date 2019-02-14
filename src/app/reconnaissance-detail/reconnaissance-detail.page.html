@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button (click)="closeModal()" slot="end" shape="round" fill="outline">
+      <ion-icon name="close"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-slides pager="" [options]="{effect:'flip'}">
+    <ion-slide *ngFor="let info of information.contenu">
+      <ion-card style="background-color: blue">
+        <h1 text-center="" text-wrap="" style="color:white">{{information.titre}}</h1>
+        <ion-img [src]="information.photo"></ion-img>
+        <ion-card-content>
+          <h1 text-center="" text-wrap="" style="color:white">{{info}}</h1>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>

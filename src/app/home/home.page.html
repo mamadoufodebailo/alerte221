@@ -1,16 +1,105 @@
 <ion-header>
+  <ion-img [src]="logo"></ion-img>
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <h5 style="color: white" text-left="" text-wrap="">{{slogan}}</h5>
+    <ion-buttons slot="end">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>
-      Home
-    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the
-    <a target="_blank" rel="noopener" href="https://ionicframework.com/docs">docs</a> will be your guide.</p>
+    <ion-grid>
+      <ion-row>
+          <ion-col>
+              <h2 text-center="">Touki</h2>
+              <a (click)="showVoyage()">
+                  <img height="70" width="100" src="assets/icones/voyage.png" />
+              </a>
+          </ion-col>
+          <ion-col>
+              <h2 text-center="">Bitim Rew</h2>
+              <a (click)="showResident()">
+                  <img height="70" width="100" src="assets/icones/resident.jpg" />
+              </a>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <h2 text-center="">Service aux usagers</h2>
+                <a routerLink="/service" routerDirection="forward">
+                    <img height="70" width="100" src="assets/icones/services.png" />
+                </a>
+            </ion-col>
+            <ion-col>
+                <h2 text-center="">J'active la géolocalisation</h2>
+                <a (click)="getPosition()">
+                    <img height="70" width="100" src="assets/icones/position.png" />
+                </a>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+      <p text-wrap="" padding="" style="color: white;font-size: 0.9em;background-color: rgba(0,0,0,0.6);">
+        * En activant la géolocalisation, l'application sera en mesure de vous informer
+        si vous vous situez en zone de danger. Les données de géolocalisation sont traitées
+        localement sur votre mobile et ne font l'objet d'aucune transmission ou enregistrement
+        dans les bases de données auprés de l'administration.
+      </p>
+
+      <h6 text-center="" text-wrap="" style="color: red">COMMENT AGIR EN CAS D'ALERTE ?</h6>
+
+      <ion-slides pager="true" [options]="{effect: 'flip'}"
+                  style="background-color: rgba(0,0,0,0.3)">
+        <ion-slide>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <a (click)="openPage('hydraulique')">
+                  <img height="70" width="50" src="assets/infos/hydraulique.jpg">
+                </a>
+                <h5 text-wrap="" text-center="">Probléme Hydraulique</h5>
+              </ion-col>
+                <ion-col>
+                    <a (click)="openPage('attentat')">
+                        <img height="70" width="50" src="assets/infos/alerte.png">
+                    </a>
+                    <h5 text-wrap="" text-center="">Attentat</h5>
+                </ion-col>
+              <ion-col>
+                <a (click)="openPage('inondation')">
+                  <img height="70" width="50" src="assets/infos/inondation.jpg">
+                </a>
+                <h5 text-wrap="" text-center="">Inondation</h5>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-slide>
+
+        <ion-slide>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <a (click)="openPage('nucleaire')">
+                  <img height="70" width="70" src="assets/infos/nuclaire.png">
+                </a>
+                <h5 text-wrap="" text-center="">Nucléaire</h5>
+              </ion-col>
+              <ion-col>
+                <a (click)="openPage('produit')">
+                  <img height="70" width="70" src="assets/infos/produit.jpg">
+                </a>
+                <h5 text-wrap="" text-center="">Produits dangereux</h5>
+              </ion-col>
+              <ion-col>
+                <a (click)="openPage('urgence')">
+                  <img height="70" width="70" src="assets/infos/urgence.jpg">
+                </a>
+                <h5 text-wrap="" text-center="">Kit d'urgence</h5>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-slide>
+      </ion-slides>
+
 </ion-content>

@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-img [src]="logo"></ion-img>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="showPhoto()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-buttons>
+    <h5 style="color: white" text-center="" text-wrap="">{{slogan}}</h5>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <h3 text-wrap="" text-center="">Inscrivez-vous en toute liberté</h3>
+
+    <form [formGroup]="fgroup" (ngSubmit)="inscrire(fgroup.value)">
+      <ion-list>
+        <ion-item>
+          <ion-label>Prénoms</ion-label>
+          <ion-input formControlName="prenoms"></ion-input>
+          <span *ngIf="!fgroup.controls['prenoms'].valid && fgroup.controls['prenoms'].touched">
+            Veuillez remplir correctement le champs !
+          </span>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Nom</ion-label>
+          <ion-input formControlName="nom"></ion-input>
+          <span *ngIf="!fgroup.controls['nom'].valid && fgroup.controls['nom'].touched">
+            Veuillez remplir correctement le champs !
+          </span>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Sexe</ion-label>
+          <ionic-selectable
+                  formControlName="sexe"
+                  [items]="sexe"
+                  itemValueField="id"
+                  itemTextField="name"
+                  (onChange)="sexeChanged($event)">
+          </ionic-selectable>
+          <span *ngIf="!fgroup.controls['sexe'].valid && fgroup.controls['sexe'].touched">
+            Veuillez remplir correctement le champs !
+          </span>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Date de naissance</ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" formControlName="dateNaissance"></ion-datetime>
+          <span *ngIf="!fgroup.controls['dateNaissance'].valid && fgroup.controls['dateNaissance'].touched">
+            Veuillez remplir correctement le champs !
+          </span>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Lieu de naissance</ion-label>
+          <ion-input formControlName="lieuNaissance"></ion-input>
+          <span *ngIf="!fgroup.controls['lieuNaissance'].valid && fgroup.controls['lieuNaissance'].touched">
+            Veuillez remplir correctement le champs !
+          </span>
+        </ion-item>
+        <ion-item>
+          <ion-label>Téléphone</ion-label>
+          <ion-input formControlName="telephone"></ion-input>
+          <span *ngIf="!fgroup.controls['telephone'].valid && fgroup.controls['telephone'].touched">
+            Veuillez remplir correctement le champs !
+          </span>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Prénom du pére</ion-label>
+          <ion-input formControlName="prenomPere"></ion-input>
+          <span *ngIf="!fgroup.controls['prenomPere'].valid && fgroup.controls['prenomPere'].touched">
+            Veuillez remplir correctement le champs !
+          </span>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Prénom de la mére</ion-label>
+          <ion-input formControlName="prenomMere"></ion-input>
+          <span *ngIf="!fgroup.controls['prenomMere'].valid && fgroup.controls['prenomMere'].touched">
+            Veuillez remplir correctement le champs !
+          </span>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Nom de la mére</ion-label>
+          <ion-input formControlName="nomMere"></ion-input>
+          <span *ngIf="!fgroup.controls['nomMere'].valid && fgroup.controls['nomMere'].touched">
+            Veuillez remplir correctement le champs !
+          </span>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Pays de résidence</ion-label>
+          <ion-input formControlName="pays"></ion-input>
+          <span *ngIf="!fgroup.controls['pays'].valid && fgroup.controls['pays'].touched">
+            Veuillez remplir correctement le champs !
+          </span>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Adresse</ion-label>
+          <ion-textarea formControlName="adresse"></ion-textarea>
+          <span *ngIf="!fgroup.controls['adresse'].valid && fgroup.controls['adresse'].touched">
+            Veuillez remplir correctement le champs !
+          </span>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>{{photo}}</ion-label>
+        </ion-item>
+
+        <ion-button type="submit" expand="full" [disabled]="!fgroup.valid">S'inscrire</ion-button>
+
+      </ion-list>
+    </form>
+
+</ion-content>

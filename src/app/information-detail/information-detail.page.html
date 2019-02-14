@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button (click)="closeModal()" slot="end" shape="round" fill="outline">
+      <ion-icon name="close"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card style="background-color: blue">
+    <ion-card-title>
+      <h2 text-center="" text-wrap="" style="color: white">{{information.titre}}</h2>
+    </ion-card-title>
+    <ion-img [src]="information.photo"></ion-img>
+    <ion-card-content>
+      <p text-wrap="" text-center="" style="color: white">{{information.contenu}}</p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

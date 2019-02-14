@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-img [src]="logo"></ion-img>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="retourPage()">
+      <ion-icon name="arrow-round-back"></ion-icon>
+    </ion-buttons>
+    <h5 text-wrap="" text-center="" style="color: white">{{slogan}}</h5>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <h3 text-center="">COMMENT AGIR</h3>
+
+    <ion-img style="height: 90px" [src]="informations?.photo"></ion-img>
+
+    <ion-item *ngFor="let info of informations?.contenu">
+      <a style="cursor: pointer" text-center="" (click)="onDetail(informations)">{{info}}</a>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-img [src]="logo"></ion-img>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="retourPage()">
+      <ion-icon name="arrow-round-back"></ion-icon>
+    </ion-buttons>
+    <h5 text-center="" text-wrap="" style="color: white">{{slogan}}</h5>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+
+    <h2 text-wrap="" text-center="" style="color:blue;margin-bottom: 30px">Les informations utiles</h2>
+
+    <ion-item text-wrap="" (click)="openDetail('document')">
+      Perte de documents
+    </ion-item>
+    <ion-item text-wrap="" (click)="openDetail('carte')">
+      demande de carte CNI
+    </ion-item>
+    <ion-item text-wrap="" (click)="openDetail('papier')">
+      demande de papier administratif
+    </ion-item>
+
+  </ion-list>
+</ion-content>

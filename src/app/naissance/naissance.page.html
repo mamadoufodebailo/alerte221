@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-img [src]="logo"></ion-img>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="retourPage()">
+      <ion-icon name="arrow-round-back"></ion-icon>
+    </ion-buttons>
+    <h5 style="color: white" text-center="" text-wrap="">{{slogan}}</h5>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <h3 text-wrap="" text-center="">Informer nous votre enfant</h3>
+
+  <form #f="ngForm" (submit)="acteNaissance(f.value)">
+    <ion-list>
+      <ion-item>
+        <ion-label>Prénom Pére</ion-label>
+        <ion-input required="required" clearInput name="prenomPere" [(ngModel)]="acte.prenomPere"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Nom Pére</ion-label>
+        <ion-input required="required" clearInput name="nomPere" [(ngModel)]="acte.nomPere"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Prénom Mére</ion-label>
+        <ion-input required="required" clearInput name="prenomMere" [(ngModel)]="acte.prenomMere"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Nom Mére</ion-label>
+        <ion-input required="required" clearInput name="nomMere" [(ngModel)]="acte.nomMere"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>N° Passeport Pére</ion-label>
+        <ion-input clearInput name="prenomPere" [(ngModel)]="acte.passeportPere"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>N° Passeport Mére</ion-label>
+        <ion-input clearInput name="prenomPere" [(ngModel)]="acte.passeportMere"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Prénom enfant</ion-label>
+        <ion-input required="required" clearInput name="prenomEnfant" [(ngModel)]="acte.prenomEnfant"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Nom enfant</ion-label>
+        <ion-input required="required" clearInput name="nomEnfant" [(ngModel)]="acte.nomEnfant"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Sexe enfant</ion-label>
+        <ionic-selectable required="required" name="sexeEnfant"
+                          [(ngModel)]="acte.sexeEnfant"
+                          [items]="sexe"
+                          itemValueField="id"
+                          itemTextField="name"
+                          [canSearch]="true"
+                          (onChange)="sexeChanged($event)">
+        </ionic-selectable>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Date de naissance</ion-label>
+        <ion-button (click)="showDatePicker()">
+          <ion-icon name="calendar"></ion-icon>
+        </ion-button>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Lieu de naissance</ion-label>
+        <ion-input required="required" clearInput name="lieuNaissance" [(ngModel)]="acte.lieuNaissance"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Pays de résidence</ion-label>
+        <ion-input required="required" clearInput name="pays" [(ngModel)]="acte.paysNaissance"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-button expand="full" type="submit" [disabled]="!f.valid">S'inscrire</ion-button>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>
